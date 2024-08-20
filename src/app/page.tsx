@@ -1,3 +1,5 @@
-export default function Home() {
-  return <main className="flex justify-center">e commerce app</main>;
-}
+export const HomePage = () => {
+  return <div className="">HomePage</div>;
+};
+
+export default HomePage;
