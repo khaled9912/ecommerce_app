@@ -17,3 +17,8 @@ export interface ProductProps {
   description: string;
   price: number;
 }
+
+export interface CategoryItemProps {
+  imgUrl: string;
+  name: string;
+}

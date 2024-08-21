@@ -61,3 +61,33 @@ export const slides = [
     bg: 'bg-gradient-to-r from-blue-50 to-yellow-50',
   },
 ];
+export const categories = [
+  {
+    img: images.imgUrl1,
+    name: 'category 1',
+  },
+  {
+    img: images.imgUrl2,
+    name: 'category 2',
+  },
+  {
+    img: images.imgUrl3,
+    name: 'category 3',
+  },
+  {
+    img: images.imgUrl4,
+    name: 'category 4',
+  },
+  {
+    img: images.imgUrl2,
+    name: 'category 5',
+  },
+  {
+    img: images.imgUrl3,
+    name: 'category 6',
+  },
+  {
+    img: images.imgUrl2,
+    name: 'category 7',
+  },
+];
