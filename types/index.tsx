@@ -10,3 +10,10 @@ export interface SliderTextProps {
   description: string;
   url: string;
 }
+
+export interface ProductProps {
+  imgUrl: string;
+  name: string;
+  description: string;
+  price: number;
+}
