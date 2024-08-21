@@ -17,3 +17,7 @@
 .menu-items {
   @apply absolute bg-black text-white left-0 top-20 w-full h-[calc(100vh-80px)] flex flex-col items-center justify-center gap-8 text-xl z-10;
 }
+
+.cart-modal {
+  @apply w-max absolute p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0,2)] bg-white top-12 right-0 flex flex-col gap-6 z-20;
+}
