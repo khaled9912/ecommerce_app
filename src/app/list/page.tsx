@@ -21,6 +21,7 @@ const ListPage = () => {
             src={images.imgUrl4}
             alt="product list filter image"
             fill
+            sizes="25vw"
             className="object-cover"
           />
         </div>
