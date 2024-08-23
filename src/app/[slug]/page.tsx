@@ -1,7 +1,6 @@
 import Add from '@/components/Add';
 import CustomizedProducts from '@/components/CustomizedProducts';
 import ProductImages from '@/components/ProductImages';
-import React from 'react';
 import { ProductProps } from '../../../types/index';
 import { fetchProduct } from '../../../utils/index';
 

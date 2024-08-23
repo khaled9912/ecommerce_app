@@ -7,7 +7,7 @@ const CategoryItem = ({ name, imgUrl }: CategoryItemProps) => {
     <>
       <div className="relative bg-slate-100 w-full h-96">
         <Image
-          src={imgUrl}
+          src={imgUrl || 'category.png'}
           alt="category product image"
           fill
           sizes="20vw"

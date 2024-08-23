@@ -1,10 +1,13 @@
 import Image from 'next/image';
-import React from 'react';
-import { images } from '../../../constants/index';
+import React, { Suspense } from 'react';
 import Filter from '@/components/Filter';
 import ProductList from '@/components/ProductList';
+import { images } from '../../../constants/index';
 
-const ListPage = () => {
+const ListPage = async ({ searchParams }: { searchParams: any }) => {
+  const categoryName = searchParams['cat'];
+  // const catogryImage = searchParams['img'];
+
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
       <div className="hidden bg-pink-50 px-4 sm:flex justify-between h-64">
@@ -18,7 +21,7 @@ const ListPage = () => {
         </div>
         <div className="relative w-1/3">
           <Image
-            src={images.imgUrl4}
+            src={images.imgUrl2}
             alt="product list filter image"
             fill
             sizes="25vw"
@@ -29,8 +32,14 @@ const ListPage = () => {
       {/* FILTER */}
       <Filter />
       {/* PRODUCTS */}
-      <h1 className="mt-12 text-xl font-semibold">Shoes For You!</h1>
-      <ProductList />
+      <h1 className="mt-12 text-xl font-semibold">
+        {`${categoryName}`.charAt(0).toUpperCase() +
+          ` ${categoryName}`.slice(2)}{' '}
+        For You!
+      </h1>
+      <Suspense fallback={'loading...'}>
+        <ProductList categoryName={categoryName} searchParmas={searchParams} />
+      </Suspense>
     </div>
   );
 };

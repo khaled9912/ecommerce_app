@@ -21,6 +21,6 @@ export interface ProductProps {
 }
 
 export interface CategoryItemProps {
-  imgUrl: string;
   name: string;
+  imgUrl: string;
 }

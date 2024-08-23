@@ -1,18 +1,24 @@
 import Link from 'next/link';
-import { categories } from '../../constants/index';
 import CategoryItem from './CategoryItem';
+import { CategoryItemProps } from '../../types/index';
+import { addImagesToCategories, fetchCategories } from '../../utils/index';
 
-const CategoryList = () => {
+const CategoryList = async () => {
+  const categories = await fetchCategories();
+
+  // TODO the api result does not have a cat_image so, i used static images for now
+  const categoriesWithImages: CategoryItemProps[] =
+    addImagesToCategories(categories);
   return (
-    <div className="px-4 overflow-x-scroll scrollbar-hide">
-      <div className="flex gap-4 md:gap-8">
-        {categories.map((category, index) => (
+    <div className=" ">
+      <div className="mt-12 flex gap-x-8 gap-y-16 justify-between ">
+        {categoriesWithImages.map((category) => (
           <Link
-            href="/list?cat=test"
-            className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 xl:w-1/6"
-            key={index}
+            href={`/list?cat=${category.name}`}
+            className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]"
+            key={category.name}
           >
-            <CategoryItem name={category.name} imgUrl={category.img} />
+            <CategoryItem {...category} />
           </Link>
         ))}
       </div>

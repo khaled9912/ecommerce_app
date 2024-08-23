@@ -10,14 +10,14 @@ const Product = ({ title, price, description, image }: ProductProps) => {
       <div className="relative w-full h-80">
         <Image
           src={image}
-          className="absolute object-cover rounded-md z-10 hover:opacity-0 transition-opacity easy duration-500"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ease-in-out hover:opacity-0"
           alt={description}
           fill
           sizes="25vw"
         />
         <Image
           src={images.imgUrl3}
-          className="absolute object-cover rounded-md"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100"
           alt="product image"
           fill
           sizes="25vw"
