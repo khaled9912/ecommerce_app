@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import CategoryItem from './CategoryItem';
 import { CategoryItemProps } from '../../types/index';
-import { addImagesToCategories, fetchCategories } from '../../utils/index';
+import { fetchCategories } from '../../lib/actions';
+import { addImagesToCategories } from '../../utils/index';
 
 const CategoryList = async () => {
   const categories = await fetchCategories();
@@ -11,7 +12,7 @@ const CategoryList = async () => {
     addImagesToCategories(categories);
   return (
     <div className=" ">
-      <div className="mt-12 flex gap-x-8 gap-y-16 justify-between ">
+      <div className="mt-12 flex  gap-x-8 gap-y-16 justify-between flex-wrap ">
         {categoriesWithImages.map((category) => (
           <Link
             href={`/list?cat=${category.name}`}

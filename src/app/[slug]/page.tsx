@@ -2,7 +2,7 @@ import Add from '@/components/Add';
 import CustomizedProducts from '@/components/CustomizedProducts';
 import ProductImages from '@/components/ProductImages';
 import { ProductProps } from '../../../types/index';
-import { fetchProduct } from '../../../utils/index';
+import { fetchProduct } from '../../../lib/actions';
 
 const SinglePage = async ({ searchParams }: { searchParams: any }) => {
   const productId = searchParams['product'];

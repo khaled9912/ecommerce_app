@@ -2,7 +2,8 @@ import Link from 'next/link';
 import React from 'react';
 import Product from './Product';
 import { ProductProps } from '../../types/index';
-import { fetchCategoryProducts, fetchProducts } from '../../utils/index';
+
+import { fetchCategoryProducts } from '../../lib/actions';
 
 const ProductList = async ({
   categoryName,
