@@ -12,10 +12,12 @@ export interface SliderTextProps {
 }
 
 export interface ProductProps {
-  imgUrl: string;
-  name: string;
-  description: string;
+  id: number;
+  title: string;
   price: number;
+  category: string;
+  description: string;
+  image: string;
 }
 
 export interface CategoryItemProps {

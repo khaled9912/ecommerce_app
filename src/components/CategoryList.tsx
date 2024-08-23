@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { categories, images } from '../../constants/index';
-import Image from 'next/image';
+import { categories } from '../../constants/index';
 import CategoryItem from './CategoryItem';
 
 const CategoryList = () => {
