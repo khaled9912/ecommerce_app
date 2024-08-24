@@ -33,8 +33,11 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
       <Filter />
       {/* PRODUCTS */}
       <h1 className="mt-12 text-xl font-semibold">
-        {`${categoryName}`.charAt(0).toUpperCase() +
-          ` ${categoryName}`.slice(2)}{' '}
+        {categoryName
+          ? `${categoryName} `.charAt(0).toUpperCase() +
+            ` ${categoryName}`.slice(2)
+          : 'Prodcuts '}
+        {'   '}
         For You!
       </h1>
       <Suspense fallback={'loading...'}>

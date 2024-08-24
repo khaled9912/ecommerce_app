@@ -26,7 +26,7 @@ const SinglePage = async ({ searchParams }: { searchParams: any }) => {
         </div>
         <div className="h-[2px] bg-gray-100" />
         <CustomizedProducts />
-        <Add />
+        <Add productId={productId} />
         <div className="h-[2px] bg-gray-100" />
         <div className="text-sm">
           <h4 className="font-medium mb-4">{product.title}</h4>

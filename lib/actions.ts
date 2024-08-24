@@ -2,7 +2,7 @@
 
 const PRODUCT_PER_PAGE = 20;
 
-export async function fetchProducts({ limit }: { limit?: number }) {
+export async function fetchProducts(limit?: number) {
   try {
     const response = await fetch(
       `https://fakestoreapi.com/products?limit=${limit || PRODUCT_PER_PAGE}`
@@ -15,7 +15,7 @@ export async function fetchProducts({ limit }: { limit?: number }) {
   }
 }
 
-export async function fetchProduct(productId: number) {
+export async function fetchProduct(productId: string) {
   try {
     const response = await fetch(
       `https://fakestoreapi.com/products/${productId}`
@@ -43,14 +43,20 @@ export async function fetchCategories() {
   }
 }
 
-export async function fetchCategoryProducts(categoryName: string) {
+export async function fetchCategoryProducts(
+  limit?: number,
+  categoryName?: string
+) {
   try {
-    const response = await fetch(
-      `https://fakestoreapi.com/products/category/${categoryName}`
-    );
-    const result = await response.json();
+    if (categoryName) {
+      const response = await fetch(
+        `https://fakestoreapi.com/products/category/${categoryName}`
+      );
+      const result = await response.json();
 
-    return result;
+      return result;
+    }
+    return await fetchProducts(limit);
   } catch (error) {
     return { message: 'Failed to retrieve the category' };
   }

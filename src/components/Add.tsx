@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const Add = () => {
+const Add = ({ productId }: { productId: string }) => {
   const [quantity, setQuantity] = useState(1);
 
   //TEMPORARY

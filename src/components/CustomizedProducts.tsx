@@ -1,4 +1,4 @@
-import React from 'react';
+import { ProductProps } from '../../types/index';
 
 const CustomizedProducts = () => {
   return (
