@@ -3,8 +3,10 @@ import React from 'react';
 import Product from './Product';
 import { ProductProps } from '../../types/index';
 
-import { fetchCategoryProducts } from '../../lib/actions';
-import { findProductsContainsSearchParams } from '../../utils/index';
+import {
+  fetchCategoryProducts,
+  findProductsContainsSearchParams,
+} from '../../utils/index';
 
 const ProductList = async ({
   categoryName,
@@ -25,7 +27,6 @@ const ProductList = async ({
     searchParmas
   );
 
-  // console.log(products);
   return (
     <div className="mt-12 flex gap-x-8 gap-y-16 justify-center flex-wrap">
       {products.map((product) => (

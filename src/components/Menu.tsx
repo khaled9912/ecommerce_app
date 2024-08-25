@@ -20,8 +20,7 @@ const Menu = () => {
       {open && (
         <div className="menu-items">
           <Link href="/">HomePage</Link>
-          <Link href="/">Shope</Link>
-          <Link href="/">Deals</Link>
+          <Link href="/list">Products</Link>
           <Link href="/">About</Link>
           <Link href="/">Contacts</Link>
           <Link href="/">Logout</Link>

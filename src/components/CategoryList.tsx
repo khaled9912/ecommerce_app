@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import CategoryItem from './CategoryItem';
 import { CategoryItemProps } from '../../types/index';
-import { fetchCategories } from '../../lib/actions';
+import { fetchCategories } from '../../utils/index';
 import { addImagesToCategories } from '../../utils/index';
 
 const CategoryList = async () => {
