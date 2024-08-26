@@ -1,24 +1,27 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { ProductCartProps } from '../types/index';
+import { ProductProps } from '../types/index';
 
 interface CartState {
-  cartItems: ProductCartProps[];
+  cartItems: ProductProps[];
   user: string | null;
   isAuthenticated: boolean;
   error: string;
-  addItemToCart: (item: ProductCartProps) => void;
+  totalPrice: number;
+  addItemToCart: (item: ProductProps, quantity: number) => void;
   removeItemFromCart: (productId: string) => void;
   login: (username: string, password: string) => Promise<void>;
   logout: () => void;
+  calculateTotalPrice: () => void;
 }
 
 const useCartStore = create(
   persist<CartState>(
     (set, get) => ({
       cartItems: [],
-      user: 'Shory',
+      user: null,
       isAuthenticated: false,
+      totalPrice: 0,
       login: async (username, password) => {
         // if we have an api we can hanlde this to recieve a token after the user authenticate.
         try {
@@ -31,7 +34,7 @@ const useCartStore = create(
           });
           if (response.ok) {
             const data = await response.json();
-            set({ user: data.user, isAuthenticated: true });
+            set({ user: 'Shory', isAuthenticated: true });
             localStorage.setItem('user', JSON.stringify(data.user));
           } else {
             set({ error: 'Invalid username or password!' });
@@ -43,44 +46,56 @@ const useCartStore = create(
       },
 
       logout: () => {
-        set({ user: null, isAuthenticated: false });
+        set({ user: null, isAuthenticated: false, error: '' });
         localStorage.removeItem('user');
+        set;
       },
       error: '',
-      addItemToCart: (item: ProductCartProps) => {
+      addItemToCart: (item: ProductProps, quantity: number) => {
         // Find if the item already exists in the cart
         const itemExists = get().cartItems.find(
-          (cartItem) => cartItem.productId === item.productId
+          (cartItem) => cartItem.id === item.id
         );
 
         if (itemExists) {
           // If item exists, increase its quantity
-          itemExists.quantity += item.quantity;
+          itemExists.quantity += quantity;
           // Update the state with the modified cart items
           set({ cartItems: [...get().cartItems] });
         } else {
           // If item does not exist, create a new item
-          const newItem: ProductCartProps = {
-            productId: item.productId,
-            quantity: item.quantity,
+          const newItem: ProductProps = {
+            ...item,
+            id: item.id,
+            quantity: quantity,
           };
           // Add the new item to the cart
           set({ cartItems: [...get().cartItems, newItem] });
         }
+        // Recalculate the total price
+        get().calculateTotalPrice();
       },
       removeItemFromCart: (productId) => {
         const itemExists = get().cartItems.find(
-          (cartItem) => cartItem.productId === productId
+          (cartItem) => cartItem.id === productId
         );
-
         if (itemExists) {
           if (typeof itemExists.quantity === 'number') {
             const updatedCartItems = get().cartItems.filter(
-              (item) => item.productId !== productId
+              (item) => item.id !== productId
             );
             set({ cartItems: updatedCartItems });
           }
         }
+        // Recalculate the total price
+        get().calculateTotalPrice();
+      },
+      calculateTotalPrice: () => {
+        const total = get().cartItems.reduce(
+          (sum, cartItem) => sum + cartItem.price * cartItem.quantity,
+          0
+        );
+        set({ totalPrice: total });
       },
     }),
     {

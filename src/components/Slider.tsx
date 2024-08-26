@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 //
 import { slides } from '../../constants/index';
@@ -39,7 +38,7 @@ const Slider = () => {
             <div className="h-1/2 xl:w-1/2 xl:h-full relative">
               <Image
                 src={slide.img}
-                alt=""
+                alt="slider image"
                 fill
                 sizes="100%"
                 className="object-cover"

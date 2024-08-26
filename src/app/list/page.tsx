@@ -26,6 +26,7 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
             fill
             sizes="25vw"
             className="object-cover"
+            priority
           />
         </div>
       </div>

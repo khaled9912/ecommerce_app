@@ -11,14 +11,10 @@ export interface ProductProps {
   category: string;
   description: string;
   image: string;
+  quantity: number;
 }
 
 export interface CategoryItemProps {
   name: string;
   imgUrl: string;
-}
-
-export interface ProductCartProps {
-  productId: string;
-  quantity: number;
 }

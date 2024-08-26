@@ -13,6 +13,7 @@ const Product = ({ title, price, description, image }: ProductProps) => {
           alt={description}
           fill
           sizes="25vw"
+          priority
         />
         <Image
           src={images.imgUrl3}
@@ -20,6 +21,7 @@ const Product = ({ title, price, description, image }: ProductProps) => {
           alt="product image"
           fill
           sizes="25vw"
+          priority
         />
       </div>
       <div className="flex justify-between">

@@ -1,13 +1,16 @@
 import Image from 'next/image';
 import useCartStore from '../../hooks/useCartStore';
+import { ProductProps } from '../../types/index';
 
 const CartItem = ({
-  productId,
+  id,
+  title,
+  price,
+  category,
+  description,
+  image,
   quantity,
-}: {
-  productId: string;
-  quantity: number;
-}) => {
+}: ProductProps) => {
   const { removeItemFromCart } = useCartStore();
   const handleRemoveItemFromCart = (productId: string) => {
     removeItemFromCart(productId);
@@ -16,8 +19,8 @@ const CartItem = ({
     <>
       <div className="flex gap-4">
         <Image
-          src="https://images.pexels.com/photos/18322084/pexels-photo-18322084/free-photo-of-flowers-on-a-notebook.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt=""
+          src={image}
+          alt="image in the cart"
           width={72}
           height={96}
           className="object-cover rounded-md"
@@ -27,18 +30,20 @@ const CartItem = ({
           <div className="mb-4">
             {/* TITLE */}
             <div className="flex items-center justify-between gap-8">
-              <h3 className="font-semibold">{}</h3>
-              <div className="p-1 bg-gray-50 rounded-sm">${}</div>
+              <h3 className="font-semibold">{title.slice(0, 20)}</h3>
+              <div className="p-1 bg-gray-50 rounded-sm">${price}</div>
             </div>
             {/* DESC */}
-            <div className="text-sm text-gray-500">{}</div>
+            <div className="text-sm text-gray-500">
+              {description.slice(0, 20)}
+            </div>
           </div>
           {/* BOTTOM */}
           <div className="flex justify-between text-sm">
             <span className="text-gray-500">Qty. {quantity}</span>
             <button
               className="text-blue-500"
-              onClick={() => handleRemoveItemFromCart(productId)}
+              onClick={() => handleRemoveItemFromCart(id)}
             >
               Remove
             </button>

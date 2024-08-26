@@ -19,8 +19,8 @@ const Add = (product: ProductProps) => {
       setQuantity((prev) => prev + 1);
     }
   };
-  const handleAddToCart = (productId: string, quantity: number) => {
-    addItemToCart({ productId, quantity });
+  const handleAddToCart = (product: ProductProps, quantity: number) => {
+    addItemToCart(product, quantity);
   };
   return (
     <div className="flex flex-col gap-4">
@@ -48,7 +48,7 @@ const Add = (product: ProductProps) => {
           <br /> {"Don't"} miss it
         </div>
         <button
-          onClick={() => handleAddToCart(product.id, quantity)}
+          onClick={() => handleAddToCart(product, quantity)}
           className="w-36 text-sm rounded-3xl ring-1 ring-lama text-lama py-2 px-4 hover:bg-lama hover:text-white disabled:cursor-not-allowed disabled:bg-pink-200 disabled:text-white disabled:ring-none "
         >
           Add to Cart
