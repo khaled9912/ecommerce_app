@@ -1,10 +1,11 @@
 'use client';
 
 import CartItem from './CartItem';
+import useCartStore from '../../hooks/useCartStore';
 
 const CartModal = () => {
-  const cartItems = true;
-
+  const { cartItems } = useCartStore();
+  console.log(cartItems);
   return (
     <div className="cart-modal">
       {!cartItems ? (
@@ -15,18 +16,9 @@ const CartModal = () => {
           <h2 className="text-xl">Shopping Cart</h2>
           <div className="flex flex-col gap-8">
             {/* ITEM */}
-            <CartItem
-              productName="item 1 "
-              price={34}
-              available={true}
-              quantity={4}
-            />
-            <CartItem
-              productName="item 2"
-              price={45}
-              available={false}
-              quantity={3}
-            />
+            {cartItems.map((item) => (
+              <CartItem productId={item.productId} quantity={item.quantity} />
+            ))}
 
             {/* BOTTOM */}
             <div className="">

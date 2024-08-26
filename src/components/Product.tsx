@@ -6,7 +6,7 @@ import { images } from '../../constants/index';
 const Product = ({ title, price, description, image }: ProductProps) => {
   return (
     <>
-      <div className="relative w-full h-80">
+      <div className="relative w-full h-80" key={description}>
         <Image
           src={image}
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ease-in-out hover:opacity-0"

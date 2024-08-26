@@ -5,13 +5,15 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import CartModal from './CartModal';
+import useCartStore from '../../hooks/useCartStore';
 
 const NavIcons = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-
+  const { cartItems } = useCartStore();
+  let cartCount;
   const router = useRouter();
-
+  cartCount = cartItems.length;
   // TEMPORARY
   const isLoggedIn = false;
 
@@ -57,8 +59,10 @@ const NavIcons = () => {
           className="cursor-pointer"
         />
 
-        <div className="absolute -top-4 -right-4 w-6 h-6 bg-lama rounded-full text-white text-sm flex items-center justify-center">
-          2
+        <div
+          className={`absolute -top-4 -right-4 w-6 h-6 ${cartCount > 0 && 'bg-lama'} rounded-full text-white text-sm flex items-center justify-center`}
+        >
+          {cartCount > 0 && cartCount}
         </div>
       </div>
       {isCartOpen && <CartModal />}

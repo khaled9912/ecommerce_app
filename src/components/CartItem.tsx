@@ -1,12 +1,18 @@
 import Image from 'next/image';
 import { CartItemProps } from '../../types/index';
+import useCartStore from '../../hooks/useCartStore';
 
 const CartItem = ({
-  productName,
-  price,
-  available,
+  productId,
   quantity,
-}: CartItemProps) => {
+}: {
+  productId: string;
+  quantity: number;
+}) => {
+  const { removeItemFromCart } = useCartStore();
+  const handleRemoveItemFromCart = (productId: string) => {
+    removeItemFromCart(productId);
+  };
   return (
     <>
       <div className="flex gap-4">
@@ -22,16 +28,21 @@ const CartItem = ({
           <div className="mb-4">
             {/* TITLE */}
             <div className="flex items-center justify-between gap-8">
-              <h3 className="font-semibold">{productName}</h3>
-              <div className="p-1 bg-gray-50 rounded-sm">${price}</div>
+              <h3 className="font-semibold">{}</h3>
+              <div className="p-1 bg-gray-50 rounded-sm">${}</div>
             </div>
             {/* DESC */}
-            <div className="text-sm text-gray-500">{available}</div>
+            <div className="text-sm text-gray-500">{}</div>
           </div>
           {/* BOTTOM */}
           <div className="flex justify-between text-sm">
             <span className="text-gray-500">Qty. {quantity}</span>
-            <span className="text-blue-500">Remove</span>
+            <button
+              className="text-blue-500"
+              onClick={() => handleRemoveItemFromCart(productId)}
+            >
+              Remove
+            </button>
           </div>
         </div>
       </div>
