@@ -16,7 +16,9 @@ const CartModal = () => {
           <div className="flex flex-col gap-8">
             {/* ITEM */}
             {cartItems.map((item) => (
-              <CartItem {...item} />
+              <div className="flex gap-4" key={item.id}>
+                <CartItem {...item} />
+              </div>
             ))}
 
             {/* BOTTOM */}

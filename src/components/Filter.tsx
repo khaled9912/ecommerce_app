@@ -15,6 +15,7 @@ const Filter = () => {
     params.set(name, value);
     replace(`${pathname}?${params.toString()}`);
   };
+
   return (
     <div className="mt-12 flex justify-between">
       <div className="flex gap-6 flex-wrap">
@@ -26,8 +27,8 @@ const Filter = () => {
           <option>Category</option>
           <option value="electronics">electronics</option>
           <option value="jewelery">jewelery</option>
-          <option value="men's clothing">men's clothing</option>
-          <option value="women's clothing">women's clothing</option>
+          <option value="men&#39;s clothing">men&apos;s clothing</option>
+          <option value="women&#39;s clothing">women&apos;s clothing</option>
         </select>
         <input
           type="text"
