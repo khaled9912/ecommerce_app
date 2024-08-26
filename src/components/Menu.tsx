@@ -3,9 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import useCartStore from '../../hooks/useCartStore';
 
 const Menu = () => {
   const [open, setOpen] = useState(false);
+  const { logout, cartItems } = useCartStore();
 
   return (
     <div>
@@ -23,8 +25,8 @@ const Menu = () => {
           <Link href="/list">Products</Link>
           <Link href="/">About</Link>
           <Link href="/">Contacts</Link>
-          <Link href="/">Logout</Link>
-          <Link href="/">Cart(1)</Link>
+          <button onClick={() => logout()}>Logout</button>
+          <Link href="/">Cart({cartItems.length})</Link>
         </div>
       )}
     </div>
