@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-const ProductImages = ({ image, id }: { image: string; id: number }) => {
+const ProductImages = ({ image, id }: { image: string; id: string }) => {
   //TEMPORARY
   const FOUR_ITMES = [1, 2, 3, 4];
 

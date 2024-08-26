@@ -3,7 +3,7 @@ import ProductList from '@/components/ProductList';
 import Slider from '@/components/Slider';
 import { Suspense } from 'react';
 
-export const HomePage = async () => {
+export const HomePage = () => {
   return (
     <div className="">
       <Slider />

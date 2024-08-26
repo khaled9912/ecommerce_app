@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import useCartStore from '../../hooks/useCartStore';
+import { ProductProps } from '../../types/index';
 
-const Add = ({ productId }: { productId: string }) => {
+const Add = (product: ProductProps) => {
   const [quantity, setQuantity] = useState(1);
   const { addItemToCart } = useCartStore();
 
@@ -21,7 +22,6 @@ const Add = ({ productId }: { productId: string }) => {
   const handleAddToCart = (productId: string, quantity: number) => {
     addItemToCart({ productId, quantity });
   };
-  console.log('quantity', quantity, productId);
   return (
     <div className="flex flex-col gap-4">
       <h4 className="font-medium">Choose a Quantity</h4>
@@ -48,7 +48,7 @@ const Add = ({ productId }: { productId: string }) => {
           <br /> {"Don't"} miss it
         </div>
         <button
-          onClick={() => handleAddToCart(productId, quantity)}
+          onClick={() => handleAddToCart(product.id, quantity)}
           className="w-36 text-sm rounded-3xl ring-1 ring-lama text-lama py-2 px-4 hover:bg-lama hover:text-white disabled:cursor-not-allowed disabled:bg-pink-200 disabled:text-white disabled:ring-none "
         >
           Add to Cart

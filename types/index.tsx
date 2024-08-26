@@ -1,10 +1,3 @@
-export interface CartItemProps {
-  productName: string;
-  price: number;
-  available: boolean;
-  quantity: number;
-}
-
 export interface SliderTextProps {
   title: string;
   description: string;
@@ -12,7 +5,7 @@ export interface SliderTextProps {
 }
 
 export interface ProductProps {
-  id: number;
+  id: string;
   title: string;
   price: number;
   category: string;
@@ -23,4 +16,9 @@ export interface ProductProps {
 export interface CategoryItemProps {
   name: string;
   imgUrl: string;
+}
+
+export interface ProductCartProps {
+  productId: string;
+  quantity: number;
 }

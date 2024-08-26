@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { CartItemProps } from '../../types/index';
 import useCartStore from '../../hooks/useCartStore';
 
 const CartItem = ({

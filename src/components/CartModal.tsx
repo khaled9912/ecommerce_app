@@ -5,7 +5,6 @@ import useCartStore from '../../hooks/useCartStore';
 
 const CartModal = () => {
   const { cartItems } = useCartStore();
-  console.log(cartItems);
   return (
     <div className="cart-modal">
       {!cartItems ? (

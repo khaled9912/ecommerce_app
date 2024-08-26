@@ -1,11 +1,14 @@
+'use client';
 import Link from 'next/link';
 import React from 'react';
 import Menu from './Menu';
 import Image from 'next/image';
 import SearchBar from './SearchBar';
 import NavIcons from './NavIcons';
+import useCartStore from '../../hooks/useCartStore';
 
 const Navbar = () => {
+  const { user } = useCartStore();
   return (
     <div className="navbar">
       <div className="h-full flex items-center justify-between md:hidden">
@@ -35,6 +38,9 @@ const Navbar = () => {
         <div className="w-2/3 xl:w-1/2 flex items-center justify-between gap-8">
           <SearchBar />
           <NavIcons />
+        </div>
+        <div className="text-cyan-600">
+          <h1>Welcome,{user}!</h1>
         </div>
       </div>
     </div>

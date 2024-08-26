@@ -10,17 +10,18 @@ import useCartStore from '../../hooks/useCartStore';
 const NavIcons = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const { cartItems } = useCartStore();
+  const { cartItems, logout } = useCartStore();
   let cartCount;
   const router = useRouter();
   cartCount = cartItems.length;
   // TEMPORARY
-  const isLoggedIn = false;
+  // const isLoggedIn = localStorage.getItem('token');
 
+  const handleLogout = () => {
+    logout();
+    router.push('/login');
+  };
   const handleProfile = () => {
-    if (!isLoggedIn) {
-      router.push('/login');
-    }
     setIsProfileOpen((prev) => !prev);
   };
 
@@ -37,7 +38,12 @@ const NavIcons = () => {
       {isProfileOpen && (
         <div className="absolute p-4 rounded-md top-12 left-0 text-sm shadow-[0_3px_10px_rgb(0,0,0,0,2) z-20">
           <Link href="/">Profile</Link>
-          <div className="mt-2 cursor-pointer">Logout</div>
+          <button
+            className="mt-2 cursor-pointer"
+            onClick={() => handleLogout()}
+          >
+            Logout
+          </button>
         </div>
       )}
       <Image
